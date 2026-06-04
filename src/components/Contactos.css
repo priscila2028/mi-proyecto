@@ -1,0 +1,12 @@
+.avatar {
+    border-radius: 90%;
+    width: 90px;
+    height: 90px;
+    object-fit: 15px;
+    background-color: blue;
+    
+
+}
+.contenedor-contacto{
+    display:flex
+}
