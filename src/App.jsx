@@ -6,8 +6,15 @@ import Titulo from './Titulo.jsx'
 import { useEffect,useState } from 'react'
 function App() {
   // const [count, setCount] = useState(0)
+ let [arreglo_mensajes, setArregloMensajes ]= useState([]);
   useEffect(   
-    
+    ()=>{
+      fetch("http://localhost:3000/contacto")
+      .then(respuesta=> respuesta.json())
+      .then(datos=> setArregloMensajes(datos))
+      .catch(e => console.log(e))
+      
+    },[]
   )
 
 
