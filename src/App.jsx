@@ -1,35 +1,36 @@
-// import { useState } from 'react'
-import Chat from './components/Chat.jsx'
-import Contactos from './components/contactos.jsx'
-import './App.css'
-import Titulo from './Titulo.jsx'
-import { useEffect,useState } from 'react'
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+
+import Inicio from './pages/Inicio'
+import Contactos from "./pages/Contactos"
+import Detalle from "./pages/Detalle"
+import Error from "./pages/Error"
 function App() {
-  // const [count, setCount] = useState(0)
- let [arreglo_mensajes, setArregloMensajes ]= useState([]);
-  useEffect(   
-    ()=>{
-      fetch("http://localhost:3000/contacto")
-      .then(respuesta=> respuesta.json())
-      .then(datos=> setArregloMensajes(datos))
-      .catch(e => console.log(e))
-      
-    },[]
+
+  return (
+
+    <BrowserRouter>
+      <Routes>
+
+        <Route path="/" element={<Inicio />} />
+        <Route path="/PP" element={<Contactos />} />
+        <Route path="/PP/:prod" element={<Detalle />} />
+        <Route path="*" element={<Error />} />
+
+
+
+      </Routes>
+
+
+
+
+    </BrowserRouter>
+
+
+
   )
 
 
-return (
-  <>
-    <h1>WhatsApp</h1>
-    
-    {
 
-      arreglo_mensajes.map((elemento, indice) => <Contactos key={indice}{...elemento} ></Contactos>)
-    }
-    
-    <Chat></Chat>
-  </>
-)
+
 }
-
-export default App
+export default App 
